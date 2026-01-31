@@ -20,6 +20,7 @@ Last updated: 2026-01-31
 - Azure VM: .env created at /opt/epsteinGraph/.env
 - Azure VM: Postgres schema migration applied
 - Azure VM: Meilisearch index bootstrapped
+- Azure VM: Ingestion pipeline test (sample 5 URLs; 1 processed; 4 chunks indexed)
 
 ## In progress
 - None
