@@ -9,8 +9,13 @@
 - SSH port: 22
 
 ## Services
-- PostgreSQL: localhost:5432
+- PostgreSQL: localhost:5433
 - Meilisearch: localhost:7700
+
+## VM Runtime
+- Repo path: /opt/epsteinGraph
+- Python venv: /opt/epsteinGraph/.venv
+- Docker: installed (docker.io + docker-compose)
 
 ## Security
 - UFW: enabled (OpenSSH only)

@@ -16,6 +16,8 @@ Last updated: 2026-01-31
 - Azure VM hardening (UFW + fail2ban + SSH hardening)
 - Repo synced to Azure VM at /opt/epsteinGraph
 - Azure VM: Python venv + ops dependencies installed at /opt/epsteinGraph/.venv
+- Azure VM: Docker + docker-compose installed; Postgres + Meilisearch running
+- Azure VM: .env created at /opt/epsteinGraph/.env
 
 ## In progress
 - None
