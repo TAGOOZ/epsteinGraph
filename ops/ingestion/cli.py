@@ -58,6 +58,7 @@ def cmd_process(args: argparse.Namespace) -> None:
     output_dir.mkdir(parents=True, exist_ok=True)
 
     processed = 0
+    skipped = 0
     for url in urls:
         meta = state.get("url_meta", {}).get(url)
         if not meta:
@@ -65,13 +66,22 @@ def cmd_process(args: argparse.Namespace) -> None:
         file_path = Path(meta["path"])
         if not file_path.exists():
             continue
-        result = process_pdf(file_path, output_dir)
+        if file_path.suffix.lower() != ".pdf":
+            meta["process_skip"] = "non_pdf"
+            skipped += 1
+            continue
+        try:
+            result = process_pdf(file_path, output_dir)
+        except Exception as exc:  # pragma: no cover - runtime safety
+            meta["process_error"] = str(exc)
+            skipped += 1
+            continue
         meta["processed_output"] = result["output"]
         meta["chunk_count"] = result["chunks"]
         processed += 1
 
     save_state(state_path, state)
-    print(f"Processed {processed} files")
+    print(f"Processed {processed} files (skipped {skipped})")
 
 
 def cmd_load_db(args: argparse.Namespace) -> None:
