@@ -18,6 +18,7 @@ Last updated: 2026-01-31
 - Azure VM: Python venv + ops dependencies installed at /opt/epsteinGraph/.venv
 - Azure VM: Docker + docker-compose installed; Postgres + Meilisearch running
 - Azure VM: .env created at /opt/epsteinGraph/.env
+- Azure VM: Postgres schema migration applied
 
 ## In progress
 - None
