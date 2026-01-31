@@ -36,6 +36,7 @@ def download_all(
         content, final_url, response_headers, status = result
 
         if status == 304 and cached:
+            refresh_cached_metadata(cached)
             continue
 
         file_type = sniff_file_type(content)
@@ -84,3 +85,26 @@ def sniff_file_type(content: bytes) -> str:
     if head.startswith(b"<"):
         return "html"
     return "unknown"
+
+
+def refresh_cached_metadata(cached: dict) -> None:
+    cached_path = cached.get("path")
+    if not cached_path:
+        return
+    try:
+        with open(cached_path, "rb") as handle:
+            head = handle.read(2048)
+    except OSError:
+        return
+
+    file_type = sniff_file_type(head)
+    final_url = cached.get("final_url") or ""
+    blocked = None
+    if "/age-verify" in final_url:
+        blocked = "age_verify"
+    elif file_type == "html":
+        blocked = "html_response"
+
+    cached["file_type"] = file_type
+    if blocked:
+        cached["blocked"] = blocked
