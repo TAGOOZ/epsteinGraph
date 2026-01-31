@@ -1,0 +1,16 @@
+# secrets
+.env
+.env.*
+*.pem
+
+# dependencies
+node_modules/
+apps/web/node_modules/
+
+# local data
+infra/postgres/
+infra/meilisearch/
+ops/ingestion/state/
+
+# misc
+.DS_Store
