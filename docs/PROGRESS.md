@@ -19,6 +19,7 @@ Last updated: 2026-01-31
 - Azure VM: Docker + docker-compose installed; Postgres + Meilisearch running
 - Azure VM: .env created at /opt/epsteinGraph/.env
 - Azure VM: Postgres schema migration applied
+- Azure VM: Meilisearch index bootstrapped
 
 ## In progress
 - None
