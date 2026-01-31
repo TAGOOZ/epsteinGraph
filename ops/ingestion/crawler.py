@@ -39,7 +39,11 @@ def crawl_listing_pages(
 
     for seed in seeds:
         limiter.wait()
-        html_bytes, final_url = fetch_url(seed, user_agent=user_agent)
+        result = fetch_url(seed, user_agent=user_agent)
+        if result is None:
+            continue
+        html_bytes = result[0]
+        final_url = result[1]
         extractor = LinkExtractor(final_url)
         extractor.feed(html_bytes.decode("utf-8", errors="ignore"))
         links = filter_links(
