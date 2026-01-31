@@ -18,6 +18,7 @@
 - Dedupe key: SHA-256 of file bytes
 - Cache: re-use files by hash; no re-download if unchanged
 - ZIPs are downloaded but not unpacked or processed yet
+- Age verification responses are treated as blocked; do not bypass
 
 ## Local tooling
 - ops/ingestion/cli.py provides crawl + download with rate limiting and caching
