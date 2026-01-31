@@ -15,6 +15,7 @@ Last updated: 2026-01-31
 - NER pipeline (spaCy) to entities + mentions
 - Azure VM hardening (UFW + fail2ban + SSH hardening)
 - Repo synced to Azure VM at /opt/epsteinGraph
+- Azure VM: Python venv + ops dependencies installed at /opt/epsteinGraph/.venv
 
 ## In progress
 - None
