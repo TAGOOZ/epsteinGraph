@@ -12,5 +12,9 @@ infra/postgres/
 infra/meilisearch/
 ops/ingestion/state/
 
+# python
+__pycache__/
+*.pyc
+
 # misc
 .DS_Store
