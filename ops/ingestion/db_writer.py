@@ -6,6 +6,8 @@ from pathlib import Path
 from typing import Iterable
 from urllib.parse import urlparse
 
+from state import save_state
+
 
 def load_processed_into_db(
     *,
