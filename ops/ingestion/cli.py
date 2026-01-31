@@ -66,7 +66,7 @@ def cmd_process(args: argparse.Namespace) -> None:
         file_path = Path(meta["path"])
         if not file_path.exists():
             continue
-        if file_path.suffix.lower() != ".pdf":
+        if not is_pdf_file(file_path):
             meta["process_skip"] = "non_pdf"
             skipped += 1
             continue
@@ -82,6 +82,15 @@ def cmd_process(args: argparse.Namespace) -> None:
 
     save_state(state_path, state)
     print(f"Processed {processed} files (skipped {skipped})")
+
+
+def is_pdf_file(path: Path) -> bool:
+    try:
+        with path.open("rb") as handle:
+            header = handle.read(5)
+    except OSError:
+        return False
+    return header.startswith(b"%PDF")
 
 
 def cmd_load_db(args: argparse.Namespace) -> None:
